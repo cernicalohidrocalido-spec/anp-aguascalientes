@@ -27,6 +27,19 @@ function formatoHectareas(ha) {
   return ha.toLocaleString('es-MX', { maximumFractionDigits: 2 }) + ' ha';
 }
 
+function agregarCapasBase(map, colapsado) {
+  const calles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors',
+    maxZoom: 19
+  });
+  const satelite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community',
+    maxZoom: 19
+  });
+  calles.addTo(map);
+  L.control.layers({ 'Calles': calles, 'Satélite': satelite }, null, { position: 'topright', collapsed: !!colapsado }).addTo(map);
+}
+
 function nombreDoc(clave) {
   const nombres = {
     decreto: 'Decreto',

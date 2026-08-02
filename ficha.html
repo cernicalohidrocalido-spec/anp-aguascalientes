@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ficha ANP · Áreas Naturales Protegidas de Aguascalientes</title>
+<title>Ficha ANP · Sistema de Áreas Naturales Protegidas del Estado de Aguascalientes</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <header class="site-header">
-  <div class="brand"><span class="leaf">🌿</span> ANP Aguascalientes</div>
+  <div class="brand"><span class="leaf">🌿</span> Sistema de Áreas Naturales Protegidas del Estado de Aguascalientes</div>
   <nav class="site-nav">
     <a href="index.html">Inicio</a>
     <a href="visor.html">Visor de mapa</a>
@@ -22,7 +22,9 @@
 </main>
 
 <footer class="site-footer">
-  Áreas Naturales Protegidas de Aguascalientes · Fuente: capas SIG y decretos oficiales
+  <p>Sistema de Áreas Naturales Protegidas del Estado de Aguascalientes · Fuente: capas SIG y decretos oficiales</p>
+  <p>H. Ayuntamiento de Pabellón de Arteaga · Instituto Municipal de Biodiversidad y Protección Ambiental</p>
+  <p>Elaboración y coordinación: Biól. Luis Felipe Lozano Román</p>
 </footer>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
@@ -91,10 +93,7 @@ async function init() {
   `;
 
   const map = L.map('fichaMapa', { scrollWheelZoom: false });
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors',
-    maxZoom: 18
-  }).addTo(map);
+  agregarCapasBase(map, true);
 
   if (feature) {
     const layer = L.geoJSON(feature, {
