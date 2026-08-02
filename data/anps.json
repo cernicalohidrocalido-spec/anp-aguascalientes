@@ -57,6 +57,20 @@
     }
   },
   {
+    "id": "cadnr-043",
+    "nombre": "C.A.D.N.R. 043 Estado de Nayarit (porción Aguascalientes)",
+    "nivel": "Federal",
+    "categoria_manejo": "APRN (Área de Protección de los Recursos Naturales - Zona Protectora Forestal)",
+    "municipios": "Calvillo, Jesús María, San José de Gracia, Aguascalientes",
+    "hectareas": 66576.18,
+    "fecha_decreto": "1949-08-03 (Decreto Presidencial original, mismo origen que C.A.D.N.R. 001 Pabellón); última reforma DOF 2002-11-07",
+    "descripcion": "Zona Protectora Forestal y de Repoblación declarada mediante Decreto Presidencial del 8 de junio de 1949 (publicado el 3 de agosto de 1949) para proteger las cuencas de alimentación de las obras de irrigación del Distrito Nacional de Riego 043, denominado \"Estado de Nayarit\". Su superficie total abarca porciones de cinco estados (Aguascalientes, Jalisco, Durango, Nayarit y Zacatecas). Dentro de Aguascalientes se distribuye en tres fragmentos que se sobreponen con las áreas naturales protegidas estatales Sierra Fría y Sierra del Laurel. El 7 de noviembre de 2002 la SEMARNAT recategorizó el área como Área de Protección de los Recursos Naturales conforme a la Ley General del Equilibrio Ecológico y la Protección al Ambiente vigente, sin modificar su delimitación ni sus disposiciones originales.",
+    "pdfs": {
+      "decreto_federal": "https://cernicalohidrocalido-spec.github.io/anp-aguascalientes/assets/pdfs/cadnr-043_decreto.pdf",
+      "decreto_federal_porcion_sierra_del_laurel": "https://cernicalohidrocalido-spec.github.io/anp-aguascalientes/assets/pdfs/sierra-del-laurel_decreto-federal-cadnr043.pdf"
+    }
+  },
+  {
     "id": "sierra-fria",
     "nombre": "ANP Sierra Fría",
     "nivel": "Estatal",
