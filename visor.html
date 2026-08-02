@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Visor · Áreas Naturales Protegidas de Aguascalientes</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand"><span class="leaf">🌿</span> ANP Aguascalientes</div>
+  <nav class="site-nav">
+    <a href="index.html">Inicio</a>
+    <a href="visor.html" class="active">Visor de mapa</a>
+  </nav>
+</header>
+
+<main>
+  <h1 style="color:var(--verde-oscuro); font-size:1.4rem; margin-bottom:14px;">Visor de Áreas Naturales Protegidas</h1>
+  <div class="visor-layout">
+    <div class="panel-lateral">
+      <h2>Áreas naturales (<span id="conteo">0</span>)</h2>
+      <ul class="lista-anp-visor" id="listaANP"></ul>
+    </div>
+    <div id="mapa"></div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  Áreas Naturales Protegidas de Aguascalientes · Fuente: capas SIG y decretos oficiales
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="js/datos.js"></script>
+<script>
+let map, capaANP, ANPS = [], LAYERS_BY_ID = {};
+
+function estiloBase() {
+  return { color: '#2d6a4f', weight: 2, fillColor: '#52b788', fillOpacity: 0.35 };
+}
+function estiloResaltado() {
+  return { color: '#1b4332', weight: 3, fillColor: '#b08968', fillOpacity: 0.5 };
+}
+
+function popupHTML(props) {
+  return `<b>${props.nombre}</b><br>${formatoHectareas(props.hectareas)}<br>
+    <a class="popup-link" href="ficha.html?id=${props.id}">Ver ficha completa →</a>`;
+}
+
+function seleccionar(id) {
+  Object.entries(LAYERS_BY_ID).forEach(([lid, layer]) => {
+    layer.setStyle(lid === id ? estiloResaltado() : estiloBase());
+  });
+  document.querySelectorAll('.lista-anp-visor li').forEach(li => {
+    li.classList.toggle('activa', li.dataset.id === id);
+  });
+  const layer = LAYERS_BY_ID[id];
+  if (layer) {
+    map.fitBounds(layer.getBounds(), { maxZoom: 13 });
+    layer.openPopup();
+  }
+}
+
+async function init() {
+  map = L.map('mapa').setView([21.88, -102.3], 9);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors',
+    maxZoom: 18
+  }).addTo(map);
+
+  const [geojson, anps] = await Promise.all([cargarGeoJSON(), cargarANPs()]);
+  ANPS = anps;
+  const anpById = Object.fromEntries(anps.map(a => [a.id, a]));
+
+  capaANP = L.geoJSON(geojson, {
+    style: estiloBase,
+    onEachFeature: (feature, layer) => {
+      const props = feature.properties;
+      layer.bindPopup(popupHTML(props));
+      layer.on('click', () => seleccionar(props.id));
+      LAYERS_BY_ID[props.id] = layer;
+    }
+  }).addTo(map);
+
+  map.fitBounds(capaANP.getBounds(), { padding: [20, 20] });
+
+  const lista = document.getElementById('listaANP');
+  const ordenadas = [...geojson.features].sort((a, b) => a.properties.nombre.localeCompare(b.properties.nombre, 'es'));
+  document.getElementById('conteo').textContent = ordenadas.length;
+  for (const feat of ordenadas) {
+    const p = feat.properties;
+    const li = document.createElement('li');
+    li.dataset.id = p.id;
+    li.innerHTML = `<strong>${p.nombre}</strong><br><span style="color:var(--texto-suave)">${formatoHectareas(p.hectareas)}</span>`;
+    li.addEventListener('click', () => seleccionar(p.id));
+    lista.appendChild(li);
+  }
+}
+
+init();
+</script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Áreas Naturales Protegidas de Aguascalientes</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand"><span class="leaf">🌿</span> ANP Aguascalientes</div>
+  <nav class="site-nav">
+    <a href="index.html" class="active">Inicio</a>
+    <a href="visor.html">Visor de mapa</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <h1>Áreas Naturales Protegidas de Aguascalientes</h1>
+    <p>Consulta el visor cartográfico y las fichas informativas de las áreas naturales protegidas federales, estatales y municipales del estado de Aguascalientes.</p>
+    <div class="stats-row" id="statsRow"></div>
+    <div class="cta-row">
+      <a href="visor.html" class="btn btn-primary">Abrir visor de mapa</a>
+      <a href="#listado" class="btn btn-outline">Ver fichas por ANP</a>
+    </div>
+  </section>
+
+  <section id="listado">
+    <div class="filtros">
+      <input type="search" id="buscador" placeholder="Buscar ANP por nombre o municipio...">
+      <select id="filtroNivel">
+        <option value="">Todos los niveles</option>
+        <option value="federal">Federal</option>
+        <option value="estatal">Estatal</option>
+        <option value="municipal">Municipal</option>
+      </select>
+    </div>
+    <div class="grid-fichas" id="gridFichas"></div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  Áreas Naturales Protegidas de Aguascalientes · Fuente: capas SIG y decretos oficiales
+</footer>
+
+<script src="js/datos.js"></script>
+<script>
+let TODAS = [];
+
+function badgeTexto(nivel) {
+  if (esTodo(nivel)) return 'Nivel por confirmar';
+  return nivel;
+}
+
+function render(lista) {
+  const grid = document.getElementById('gridFichas');
+  grid.innerHTML = '';
+  if (lista.length === 0) {
+    grid.innerHTML = '<p style="color:var(--texto-suave)">No se encontraron áreas naturales protegidas con ese criterio.</p>';
+    return;
+  }
+  for (const anp of lista) {
+    const card = document.createElement('a');
+    card.href = `ficha.html?id=${anp.id}`;
+    card.className = 'card-anp';
+    card.innerHTML = `
+      <span class="badge ${nivelBadgeClass(anp.nivel)}">${badgeTexto(anp.nivel)}</span>
+      <h3>${anp.nombre}</h3>
+      <div class="meta">${esTodo(anp.municipios) || !anp.municipios ? 'Municipio por confirmar' : anp.municipios}</div>
+      <div class="meta"><strong>${formatoHectareas(anp.hectareas)}</strong></div>
+      <span class="ver-mas">Ver ficha completa →</span>
+    `;
+    grid.appendChild(card);
+  }
+}
+
+function aplicarFiltros() {
+  const q = document.getElementById('buscador').value.trim().toLowerCase();
+  const nivel = document.getElementById('filtroNivel').value;
+  const filtradas = TODAS.filter(a => {
+    const coincideTexto = !q || a.nombre.toLowerCase().includes(q) || (a.municipios || '').toLowerCase().includes(q);
+    const coincideNivel = !nivel || (a.nivel || '').toLowerCase().includes(nivel);
+    return coincideTexto && coincideNivel;
+  });
+  render(filtradas);
+}
+
+async function init() {
+  TODAS = await cargarANPs();
+  TODAS.sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
+  render(TODAS);
+
+  const totalHa = TODAS.reduce((sum, a) => sum + (a.hectareas || 0), 0);
+  document.getElementById('statsRow').innerHTML = `
+    <div class="stat-card"><div class="num">${TODAS.length}</div><div class="label">ANP registradas</div></div>
+    <div class="stat-card"><div class="num">${formatoHectareas(totalHa)}</div><div class="label">Superficie total</div></div>
+  `;
+
+  document.getElementById('buscador').addEventListener('input', aplicarFiltros);
+  document.getElementById('filtroNivel').addEventListener('change', aplicarFiltros);
+}
+
+init();
+</script>
+</body>
+</html>

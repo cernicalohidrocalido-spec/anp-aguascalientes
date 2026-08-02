@@ -1,0 +1,172 @@
+[
+  {
+    "id": "cerro-del-muerto",
+    "nombre": "ANP Cerro del Muerto",
+    "nivel": "TODO (federal/estatal/municipal)",
+    "categoria_manejo": "TODO",
+    "municipios": "Aguascalientes, Jesús María",
+    "hectareas": 5862.06,
+    "fecha_decreto": "TODO",
+    "descripcion": "TODO: reseña breve del ANP (ubicación, ecosistemas, importancia).",
+    "pdfs": {
+      "decreto": "assets/pdfs/cerro-del-muerto_decreto.pdf",
+      "programa_manejo": "assets/pdfs/cerro-del-muerto_programa-manejo.pdf"
+    }
+  },
+  {
+    "id": "cobos-parga",
+    "nombre": "ANP Cobos-Parga (Bosque de Cobos)",
+    "nivel": "TODO",
+    "categoria_manejo": "TODO",
+    "municipios": "Aguascalientes",
+    "hectareas": 183.16,
+    "fecha_decreto": "TODO",
+    "descripcion": "TODO",
+    "pdfs": {
+      "decreto": "assets/pdfs/cobos-parga_decreto.pdf",
+      "programa_manejo": "assets/pdfs/cobos-parga_programa-manejo.pdf"
+    }
+  },
+  {
+    "id": "serrania-de-juan-grande",
+    "nombre": "Serranía de Juan Grande",
+    "nivel": "TODO",
+    "categoria_manejo": "TODO",
+    "municipios": "El Llano",
+    "hectareas": 2590.90,
+    "fecha_decreto": "TODO",
+    "descripcion": "TODO",
+    "pdfs": {
+      "decreto": "assets/pdfs/serrania-de-juan-grande_decreto.pdf",
+      "certificacion": "assets/pdfs/serrania-de-juan-grande_certificacion.pdf"
+    }
+  },
+  {
+    "id": "sierra-del-laurel",
+    "nombre": "ANP Sierra del Laurel",
+    "nivel": "TODO",
+    "categoria_manejo": "TODO",
+    "municipios": "Aguascalientes, Calvillo, Jesús María",
+    "hectareas": 29851.23,
+    "fecha_decreto": "TODO",
+    "descripcion": "TODO",
+    "pdfs": {
+      "decreto": "assets/pdfs/sierra-del-laurel_decreto.pdf",
+      "programa_manejo": "assets/pdfs/sierra-del-laurel_programa-manejo.pdf",
+      "decreto_federal_cadnr043": "assets/pdfs/sierra-del-laurel_decreto-federal-cadnr043.pdf"
+    }
+  },
+  {
+    "id": "sierra-fria",
+    "nombre": "ANP Sierra Fría",
+    "nivel": "TODO",
+    "categoria_manejo": "TODO",
+    "municipios": "Calvillo, Jesús María, Pabellón de Arteaga, Rincón de Romos, San José de Gracia",
+    "hectareas": 106595.61,
+    "fecha_decreto": "TODO",
+    "descripcion": "TODO",
+    "pdfs": {
+      "decreto": "assets/pdfs/sierra-fria_decreto.pdf",
+      "programa_manejo": "assets/pdfs/sierra-fria_programa-manejo.pdf"
+    }
+  },
+  {
+    "id": "el-tecolote",
+    "nombre": "ANP El Tecolote",
+    "nivel": "TODO",
+    "categoria_manejo": "TODO",
+    "municipios": "Aguascalientes",
+    "hectareas": 513.41,
+    "fecha_decreto": "TODO",
+    "descripcion": "TODO",
+    "pdfs": {
+      "decreto": "assets/pdfs/el-tecolote_decreto.pdf",
+      "programa_manejo": "assets/pdfs/el-tecolote_programa-manejo.pdf"
+    }
+  },
+  {
+    "id": "penuelas",
+    "nombre": "ANP Ex Hacienda de Peñuelas",
+    "nivel": "TODO",
+    "categoria_manejo": "TODO",
+    "municipios": "TODO",
+    "hectareas": 347.85,
+    "fecha_decreto": "TODO",
+    "descripcion": "TODO",
+    "pdfs": {
+      "decreto": "assets/pdfs/penuelas_decreto.pdf"
+    }
+  },
+  {
+    "id": "cadnr-001-pabellon",
+    "nombre": "C.A.D.N.R. 001 Pabellón (Área de Protección de Recursos Naturales)",
+    "nivel": "Federal",
+    "categoria_manejo": "APRN (Área de Protección de los Recursos Naturales - Zona Protectora Forestal)",
+    "municipios": "Aguascalientes: Calvillo, Jesús María, Rincón de Romos, Pabellón de Arteaga y San José de Gracia; Zacatecas: Cuauhtémoc, Guadalupe, Genaro Codina, Ojocaliente y Villanueva",
+    "hectareas": 58583.08,
+    "fecha_decreto": "1949-08-03 (decreto original); última reforma DOF 2002-11-07",
+    "descripcion": "TODO",
+    "pdfs": {
+      "decreto_federal": "assets/pdfs/cadnr-001-pabellon_decreto-federal.pdf",
+      "recategorizacion": "assets/pdfs/cadnr-001-pabellon_recategorizacion.pdf",
+      "decretos_abril_2021": "assets/pdfs/cadnr-001-pabellon_decretos-abril-2021.pdf"
+    }
+  },
+  {
+    "id": "centro-ecologico-enriqueta-medellin",
+    "nombre": "ANP Centro Ecológico Enriqueta Medellín",
+    "nivel": "TODO",
+    "categoria_manejo": "TODO",
+    "municipios": "Aguascalientes",
+    "hectareas": 16.25,
+    "fecha_decreto": "TODO",
+    "descripcion": "TODO",
+    "pdfs": {
+      "decreto": "assets/pdfs/centro-ecologico-enriqueta-medellin_decreto.pdf"
+    }
+  },
+  {
+    "id": "cerro-de-la-sabina",
+    "nombre": "ANP Cerro de La Sabina",
+    "nivel": "TODO",
+    "categoria_manejo": "TODO",
+    "municipios": "Pabellón de Arteaga",
+    "hectareas": 1058.75,
+    "fecha_decreto": "TODO",
+    "descripcion": "TODO",
+    "pdfs": {}
+  },
+  {
+    "id": "barranca-de-santiago",
+    "nombre": "ANP Barranca de Santiago",
+    "nivel": "TODO",
+    "categoria_manejo": "TODO",
+    "municipios": "Pabellón de Arteaga",
+    "hectareas": 3203.24,
+    "fecha_decreto": "TODO",
+    "descripcion": "TODO",
+    "pdfs": {}
+  },
+  {
+    "id": "cobos",
+    "nombre": "ANP Cobos",
+    "nivel": "TODO",
+    "categoria_manejo": "TODO",
+    "municipios": "Aguascalientes",
+    "hectareas": 98.20,
+    "fecha_decreto": "TODO",
+    "descripcion": "TODO",
+    "pdfs": {}
+  },
+  {
+    "id": "la-pona",
+    "nombre": "ANP La Pona",
+    "nivel": "TODO",
+    "categoria_manejo": "TODO",
+    "municipios": "Aguascalientes",
+    "hectareas": 18.25,
+    "fecha_decreto": "TODO",
+    "descripcion": "TODO",
+    "pdfs": {}
+  }
+]
