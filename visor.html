@@ -73,7 +73,11 @@ function seleccionar(id) {
 }
 
 async function init() {
-  map = L.map('mapa').setView([21.88, -102.3], 9);
+  map = L.map('mapa', {
+    minZoom: 8,
+    maxBounds: [[19.8, -104.2], [24.0, -100.4]],
+    maxBoundsViscosity: 0.8
+  }).setView([21.88, -102.3], 9);
   agregarCapasBase(map);
 
   const [geojson, anps] = await Promise.all([cargarGeoJSON(), cargarANPs()]);

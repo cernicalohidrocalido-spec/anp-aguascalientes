@@ -109,7 +109,12 @@ async function init() {
     </div>
   `;
 
-  const map = L.map('fichaMapa', { scrollWheelZoom: false });
+  const map = L.map('fichaMapa', {
+    scrollWheelZoom: false,
+    minZoom: 8,
+    maxBounds: [[19.8, -104.2], [24.0, -100.4]],
+    maxBoundsViscosity: 0.8
+  });
   agregarCapasBase(map, true);
 
   if (feature) {
