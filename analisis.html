@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Análisis y comparación · Sistema de Áreas Naturales Protegidas del Estado de Aguascalientes</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand"><span class="leaf">🌿</span> Sistema de Áreas Naturales Protegidas del Estado de Aguascalientes</div>
+  <nav class="site-nav">
+    <a href="index.html">Inicio</a>
+    <a href="visor.html">Visor de mapa</a>
+    <a href="analisis.html" class="active">Análisis</a>
+  </nav>
+</header>
+
+<main>
+  <h1 style="color:var(--verde-oscuro); font-size:1.5rem; margin-bottom:6px;">Comparación con las áreas naturales protegidas</h1>
+
+  <div class="analisis-intro">
+    <p>Para el estado de Aguascalientes se presentan decretos de áreas naturales protegidas de los tres niveles de gobierno: Federal, Estatal y Municipal. En el caso de los decretos federales, se tienen los de las Cuencas Alimentadoras de los Distritos Nacionales de Riego (CADNR) 001 y 043, que incluyen porciones de territorio de la Sierra Fría y Sierra del Laurel, las cuales también presentan decretos de áreas naturales protegidas estatales — es decir, sus polígonos se sobreponen entre sí.</p>
+    <p>A continuación se presenta la lista de áreas naturales protegidas de los tres niveles de gobierno que se tienen en el estado, seguida de un análisis gráfico de su distribución y del solapamiento entre decretos.</p>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="num" id="statGross">—</div>
+      <div class="label">ha con decreto, sumando solapamientos</div>
+    </div>
+    <div class="stat-card">
+      <div class="num" id="statNet">—</div>
+      <div class="label">ha de territorio real bajo algún decreto de ANP</div>
+    </div>
+    <div class="stat-card">
+      <div class="num" id="statOverlap">—</div>
+      <div class="label">ha de solapamiento entre decretos (federal ↔ estatal)</div>
+    </div>
+    <div class="stat-card">
+      <div class="num" id="statPctEstado">—</div>
+      <div class="label">del territorio estatal bajo decreto de ANP</div>
+    </div>
+  </div>
+
+  <div class="tabla-wrap">
+    <table class="tabla-anp">
+      <caption>Cuadro 13. Áreas naturales protegidas de los tres niveles de gobierno en el estado de Aguascalientes</caption>
+      <thead>
+        <tr>
+          <th>No.</th>
+          <th>Tipo de decreto</th>
+          <th>Nombre del área protegida</th>
+          <th>Municipios</th>
+          <th>Superficie (ha)</th>
+        </tr>
+      </thead>
+      <tbody id="tablaBody"></tbody>
+      <tfoot>
+        <tr>
+          <td colspan="4">TOTAL ANP con decreto y solapamiento</td>
+          <td id="totalGrossCell">—</td>
+        </tr>
+        <tr>
+          <td colspan="4">TOTAL ANP territorio (sin duplicar solapamientos)</td>
+          <td id="totalNetCell">—</td>
+        </tr>
+      </tfoot>
+    </table>
+    <p class="nota-tabla">** Hay solapamiento en sus poligonales (CADNR 001/043 con Sierra Fría y Sierra del Laurel).</p>
+  </div>
+
+  <div class="chart-box">
+    <h2>Superficie por área natural protegida, agrupada por nivel de gobierno</h2>
+    <canvas id="chartBarras" height="140"></canvas>
+  </div>
+
+  <div class="charts-row">
+    <div class="chart-box">
+      <h2>Superficie sumada por nivel de gobierno (incluye solapamiento)</h2>
+      <canvas id="chartNivel"></canvas>
+    </div>
+    <div class="chart-box">
+      <h2>Efecto del solapamiento en la superficie total</h2>
+      <canvas id="chartSolapamiento"></canvas>
+    </div>
+  </div>
+
+  <div class="charts-row">
+    <div class="chart-box">
+      <h2>Porcentaje del territorio estatal bajo decreto de ANP</h2>
+      <canvas id="chartPctEstado"></canvas>
+    </div>
+    <div class="chart-box">
+      <h2>ANP estatales vs. promedio nacional (solo ANP federales)</h2>
+      <canvas id="chartComparativoNacional"></canvas>
+    </div>
+  </div>
+
+  <div class="chart-box">
+    <h2>ANP decretadas + áreas prioritarias para la conservación</h2>
+    <canvas id="chartAreasPrioritarias" height="110"></canvas>
+    <p class="nota-tabla" style="padding-left:0;">Al sumar la superficie de áreas prioritarias para la conservación con la de las áreas ya decretadas como ANP se obtiene una superficie combinada de 213,487.40 ha, equivalente al 37.98% del territorio estatal.</p>
+  </div>
+
+  <div class="analisis-intro">
+    <p>El territorio estatal contiene entonces <strong>152,422.50 ha</strong> bajo decreto de protección como áreas naturales protegidas, lo cual constituye el <strong>27.11%</strong> del territorio estatal, aunque cabe aclarar que este porcentaje incluye decretos de los tres niveles de gobierno. Esta cifra se encuentra por encima del porcentaje de superficie terrestre de área natural protegida que tiene el país con decreto federal, que corresponde al <strong>11.7%</strong> (CONANP, 2024).</p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p>Sistema de Áreas Naturales Protegidas del Estado de Aguascalientes · Fuente: capas SIG y decretos oficiales</p>
+  <p>H. Ayuntamiento de Pabellón de Arteaga · Instituto Municipal de Biodiversidad y Protección Ambiental</p>
+  <p>Elaboración y coordinación: Biól. Luis Felipe Lozano Román</p>
+</footer>
+
+<script>
+const DATOS = [
+  { no: 1, tipo: 'Federal**', nombre: 'CADNR 001 Pabellón', municipios: 'Calvillo, Jesús María, Pabellón, San José de Gracia y Rincón de Romos', ha: 58583.08, nivel: 'Federal' },
+  { no: 2, tipo: 'Federal**', nombre: 'CADNR 043 porción Sierra Fría', municipios: 'Calvillo y San José de Gracia', ha: 47399.90, nivel: 'Federal' },
+  { no: 2, tipo: 'Federal**', nombre: 'CADNR 043 porción Sierra del Laurel', municipios: 'Aguascalientes, Calvillo y Jesús María', ha: 19176.26, nivel: 'Federal' },
+  { no: 3, tipo: 'Estatal**', nombre: 'ANP Sierra Fría', municipios: 'Calvillo, Jesús María, Pabellón de Arteaga, Rincón de Romos, San José de Gracia', ha: 106595.61, nivel: 'Estatal' },
+  { no: 4, tipo: 'Estatal**', nombre: 'ANP Sierra del Laurel', municipios: 'Aguascalientes, Calvillo, Jesús María', ha: 29851.23, nivel: 'Estatal' },
+  { no: 5, tipo: 'Estatal**', nombre: 'ANP Cerro del Muerto', municipios: 'Aguascalientes, Jesús María', ha: 5862.06, nivel: 'Estatal' },
+  { no: 6, tipo: 'Estatal', nombre: 'ANP El Tecolote', municipios: 'Aguascalientes', ha: 513.41, nivel: 'Estatal' },
+  { no: 7, tipo: 'Estatal', nombre: 'ANP Peñuelas', municipios: 'Aguascalientes', ha: 347.85, nivel: 'Estatal' },
+  { no: 8, tipo: 'Estatal', nombre: 'ANP Cobos-Parga', municipios: 'Aguascalientes', ha: 183.16, nivel: 'Estatal' },
+  { no: 9, tipo: 'Estatal', nombre: 'ANP Centro Ecológico Enriqueta Medellín', municipios: 'Aguascalientes', ha: 16.25, nivel: 'Estatal' },
+  { no: 10, tipo: 'Federal', nombre: 'Serranía de Juan Grande', municipios: 'El Llano', ha: 2590.90, nivel: 'Federal' },
+  { no: 11, tipo: 'Municipal', nombre: 'ANP Barranca de Santiago y Garabato', municipios: 'Pabellón de Arteaga', ha: 3203.24, nivel: 'Municipal' },
+  { no: 12, tipo: 'Municipal', nombre: 'ANP El Mezquite', municipios: 'Pabellón de Arteaga', ha: 1058.75, nivel: 'Municipal' },
+  { no: 13, tipo: 'Municipal', nombre: 'ANP Vivero Conafor', municipios: 'Pabellón de Arteaga', ha: 8.48, nivel: 'Municipal' },
+  { no: 14, tipo: 'Municipal', nombre: 'ANP Cobos', municipios: 'Aguascalientes', ha: 98.20, nivel: 'Municipal' },
+  { no: 15, tipo: 'Municipal', nombre: 'ANP La Pona', municipios: 'Aguascalientes', ha: 18.25, nivel: 'Municipal' },
+  { no: 16, tipo: 'Municipal', nombre: 'ANP CEMA Calvillo', municipios: 'Calvillo', ha: 13.22, nivel: 'Municipal' },
+];
+
+const TOTAL_GROSS = 275519.85;
+const TOTAL_NET = 152422.50;
+const OVERLAP = TOTAL_GROSS - TOTAL_NET;
+const PCT_ESTADO = 27.11;
+const PCT_NACIONAL_FEDERAL = 11.7;
+const TOTAL_CON_PRIORITARIAS = 213487.40;
+const PCT_CON_PRIORITARIAS = 37.98;
+
+const COLORES = {
+  Federal: '#1d4ed8',
+  Estatal: '#b45309',
+  Municipal: '#15803d',
+};
+const COLORES_FONDO = {
+  Federal: '#e7f0fd',
+  Estatal: '#fef3e2',
+  Municipal: '#eafaf0',
+};
+
+function formatoHa(n) {
+  return n.toLocaleString('es-MX', { maximumFractionDigits: 2 }) + ' ha';
+}
+
+document.getElementById('statGross').textContent = formatoHa(TOTAL_GROSS);
+document.getElementById('statNet').textContent = formatoHa(TOTAL_NET);
+document.getElementById('statOverlap').textContent = formatoHa(OVERLAP);
+document.getElementById('statPctEstado').textContent = PCT_ESTADO.toFixed(2) + '%';
+
+const tbody = document.getElementById('tablaBody');
+tbody.innerHTML = DATOS.map(d => `
+  <tr>
+    <td>${d.no}</td>
+    <td>${d.tipo}</td>
+    <td>${d.nombre}</td>
+    <td>${d.municipios}</td>
+    <td>${formatoHa(d.ha)}</td>
+  </tr>
+`).join('');
+document.getElementById('totalGrossCell').textContent = formatoHa(TOTAL_GROSS);
+document.getElementById('totalNetCell').textContent = formatoHa(TOTAL_NET);
+
+// Gráfica 1: barras horizontales por ANP, coloreadas por nivel
+new Chart(document.getElementById('chartBarras'), {
+  type: 'bar',
+  data: {
+    labels: DATOS.map(d => d.nombre),
+    datasets: [{
+      label: 'Superficie (ha)',
+      data: DATOS.map(d => d.ha),
+      backgroundColor: DATOS.map(d => COLORES[d.nivel]),
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: ctx => formatoHa(ctx.raw) } }
+    },
+    scales: {
+      x: { title: { display: true, text: 'Hectáreas' } }
+    }
+  }
+});
+
+// Gráfica 2: suma por nivel de gobierno
+const sumaPorNivel = { Federal: 0, Estatal: 0, Municipal: 0 };
+DATOS.forEach(d => sumaPorNivel[d.nivel] += d.ha);
+new Chart(document.getElementById('chartNivel'), {
+  type: 'doughnut',
+  data: {
+    labels: Object.keys(sumaPorNivel),
+    datasets: [{
+      data: Object.values(sumaPorNivel),
+      backgroundColor: Object.keys(sumaPorNivel).map(n => COLORES[n]),
+    }]
+  },
+  options: {
+    plugins: {
+      tooltip: { callbacks: { label: ctx => `${ctx.label}: ${formatoHa(ctx.raw)}` } }
+    }
+  }
+});
+
+// Gráfica 3: efecto del solapamiento (gross vs net)
+new Chart(document.getElementById('chartSolapamiento'), {
+  type: 'bar',
+  data: {
+    labels: [['Suma de decretos', '(con solapamiento)'], ['Territorio real', 'protegido']],
+    datasets: [{
+      label: 'Hectáreas',
+      data: [TOTAL_GROSS, TOTAL_NET],
+      backgroundColor: ['#94a3b8', '#2d6a4f'],
+    }]
+  },
+  options: {
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: ctx => formatoHa(ctx.raw) } }
+    },
+    scales: { y: { title: { display: true, text: 'Hectáreas' } } }
+  }
+});
+
+// Gráfica 4: % territorio estatal protegido
+new Chart(document.getElementById('chartPctEstado'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Bajo decreto de ANP', 'Resto del territorio'],
+    datasets: [{
+      data: [PCT_ESTADO, 100 - PCT_ESTADO],
+      backgroundColor: ['#2d6a4f', '#e5e9e7'],
+    }]
+  },
+  options: {
+    plugins: {
+      tooltip: { callbacks: { label: ctx => ctx.label + ': ' + ctx.raw.toFixed(2) + '%' } }
+    }
+  }
+});
+
+// Gráfica 5: comparativo estatal vs nacional (ANP federales)
+new Chart(document.getElementById('chartComparativoNacional'), {
+  type: 'bar',
+  data: {
+    labels: [['Aguascalientes', '(ANP de los 3 niveles)'], ['Promedio nacional', '(solo ANP federales)']],
+    datasets: [{
+      label: '% del territorio',
+      data: [PCT_ESTADO, PCT_NACIONAL_FEDERAL],
+      backgroundColor: ['#2d6a4f', '#b08968'],
+    }]
+  },
+  options: {
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: ctx => ctx.raw.toFixed(2) + '%' } }
+    },
+    scales: { y: { title: { display: true, text: '% del territorio' }, max: 40 } }
+  }
+});
+
+// Gráfica 6: ANP decretadas + áreas prioritarias
+new Chart(document.getElementById('chartAreasPrioritarias'), {
+  type: 'bar',
+  data: {
+    labels: [['ANP decretadas', '(territorio real)'], ['ANP + áreas prioritarias', 'para la conservación']],
+    datasets: [{
+      label: 'Hectáreas',
+      data: [TOTAL_NET, TOTAL_CON_PRIORITARIAS],
+      backgroundColor: ['#2d6a4f', '#52b788'],
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: ctx => formatoHa(ctx.raw) } }
+    },
+    scales: { x: { title: { display: true, text: 'Hectáreas' } } }
+  }
+});
+</script>
+</body>
+</html>

@@ -122,7 +122,8 @@
     "fecha_decreto": "Decretada el 18 de agosto de 2022, publicada en el Periódico Oficial del Estado el 22 de agosto de 2022",
     "descripcion": "Ubicada a 13 km al sur de la ciudad de Aguascalientes, sobre la carretera federal 45, abarca los predios San Nicolás, San Isidro, Eloteros y Angostura, propiedad del Gobierno del Estado. Alberga un bosque nativo de mezquite (Prosopis laevigata) y huizache ligado por más de tres siglos a la Ex Hacienda de Peñuelas y al Camino Real de Tierra Adentro (Patrimonio de la Humanidad UNESCO desde 2010). Registra 80 especies de vertebrados, entre ellas 6 sujetas a protección especial y 7 amenazadas, como la rana de madriguera (endémica de México) y el murciélago trompudo, polinizador clave del maguey para la producción de mezcal. Incluye la presa San Nicolás y humedales estacionales de importancia para aves migratorias.",
     "pdfs": {
-      "decreto": "https://cernicalohidrocalido-spec.github.io/anp-aguascalientes/assets/pdfs/penuelas_decreto.pdf"
+      "decreto": "https://cernicalohidrocalido-spec.github.io/anp-aguascalientes/assets/pdfs/penuelas_decreto.pdf",
+      "programa_manejo": "https://cernicalohidrocalido-spec.github.io/anp-aguascalientes/assets/pdfs/penuelas_programa-manejo.pdf"
     }
   },
   {
@@ -176,7 +177,8 @@
     "fecha_decreto": "Decretada el 31 de marzo de 2021 por el H. Ayuntamiento de Pabellón de Arteaga, publicada en el Periódico Oficial del Estado el 19 de abril de 2021",
     "descripcion": "Barranca ubicada al norte del municipio de Pabellón de Arteaga, colindante con San José de Gracia y Jesús María, protegida bajo la categoría de Monumento Natural con el fin de conservar su vegetación natural y servicios ambientales, potenciar su valor histórico, paisajístico, recreativo, educativo y turístico, y rescatar los vestigios prehispánicos presentes en el área. Su administración corresponde al Instituto Municipal de Biodiversidad y Protección Ambiental de Pabellón de Arteaga.",
     "pdfs": {
-      "decreto": "https://cernicalohidrocalido-spec.github.io/anp-aguascalientes/assets/pdfs/barranca-santiago-mezquite-vivero_decreto-conjunto.pdf"
+      "decreto": "https://cernicalohidrocalido-spec.github.io/anp-aguascalientes/assets/pdfs/barranca-santiago-mezquite-vivero_decreto-conjunto.pdf",
+      "estudio_previo_justificativo": "https://cernicalohidrocalido-spec.github.io/anp-aguascalientes/assets/pdfs/barranca-de-santiago_epj.pdf"
     }
   },
   {

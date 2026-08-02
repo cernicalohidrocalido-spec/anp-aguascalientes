@@ -404,3 +404,98 @@ footer.site-footer p {
   font-weight: 600;
   font-size: 0.9rem;
 }
+
+.analisis-intro {
+  max-width: 900px;
+  line-height: 1.65;
+  margin-bottom: 24px;
+}
+.analisis-intro p { margin: 0 0 12px; }
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin: 22px 0 30px;
+}
+
+.stats-grid .stat-card .num { font-size: 1.5rem; }
+.stats-grid .stat-card .label { line-height: 1.35; }
+
+.tabla-wrap {
+  overflow-x: auto;
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  box-shadow: var(--sombra);
+  margin-bottom: 30px;
+}
+
+table.tabla-anp {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.86rem;
+  min-width: 720px;
+}
+
+table.tabla-anp caption {
+  text-align: left;
+  font-weight: 700;
+  color: var(--verde-oscuro);
+  padding: 14px 16px 6px;
+  font-size: 0.95rem;
+}
+
+table.tabla-anp th, table.tabla-anp td {
+  padding: 9px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--borde);
+  white-space: nowrap;
+}
+
+table.tabla-anp td:nth-child(3), table.tabla-anp th:nth-child(3) { white-space: normal; min-width: 160px; }
+table.tabla-anp td:last-child, table.tabla-anp th:last-child { text-align: right; }
+
+table.tabla-anp thead th {
+  background: var(--verde-fondo);
+  color: var(--verde-oscuro);
+  font-weight: 700;
+  position: sticky;
+  top: 0;
+}
+
+table.tabla-anp tbody tr:hover { background: var(--verde-fondo); }
+
+table.tabla-anp tfoot td {
+  font-weight: 700;
+  border-top: 2px solid var(--verde);
+  background: #fafdfb;
+}
+
+.nota-tabla {
+  font-size: 0.78rem;
+  color: var(--texto-suave);
+  padding: 8px 16px 14px;
+}
+
+.chart-box {
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: var(--sombra);
+  margin-bottom: 26px;
+}
+
+.chart-box h2 { margin-top: 0; color: var(--verde-oscuro); font-size: 1.1rem; }
+.chart-box canvas { max-width: 100%; }
+
+.charts-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 820px) {
+  .charts-row { grid-template-columns: 1fr; }
+}
