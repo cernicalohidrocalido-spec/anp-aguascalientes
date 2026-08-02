@@ -41,14 +41,22 @@ header.site-header .brand-group {
   gap: 16px;
 }
 
-header.site-header .logo-ayto {
-  height: 52px;
-  width: auto;
-  border-radius: 8px;
+header.site-header .logo-ayto-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: var(--blanco);
-  padding: 5px 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.16);
   flex-shrink: 0;
+  padding: 6px 12px;
+}
+
+header.site-header .logo-ayto {
+  display: block;
+  height: 34px;
+  width: auto;
+  object-fit: contain;
 }
 
 header.site-header .brand {
@@ -74,7 +82,8 @@ header.site-header .creditos-header {
 }
 
 @media (max-width: 560px) {
-  header.site-header .logo-ayto { height: 40px; }
+  header.site-header .logo-ayto { height: 26px; }
+  header.site-header .logo-ayto-wrap { padding: 5px 9px; }
   header.site-header .brand { font-size: 0.9rem; }
   header.site-header .creditos-header { font-size: 0.7rem; }
 }
