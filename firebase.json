@@ -1,0 +1,7 @@
+{
+  "hosting": {
+    "site": "imbio-anp",
+    "public": ".",
+    "ignore": ["firebase.json", "**/.git/**", "_build/**", "assets/pdfs/**", "**/.*"]
+  }
+}
