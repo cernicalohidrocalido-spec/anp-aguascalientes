@@ -42,6 +42,19 @@
     }
   },
   {
+    "id": "advc-san-jose",
+    "nombre": "Santuario para el Águila Real en los Bienes Comunales de San José de Gracia",
+    "nivel": "Federal",
+    "categoria_manejo": "Certificación voluntaria CONANP (Área Destinada Voluntariamente a la Conservación - ADVC, tipo Comunidades)",
+    "municipios": "San José de Gracia",
+    "hectareas": 6170.0,
+    "fecha_decreto": "Certificado CONANP-388/2015, expedido el 7 de agosto de 2015, con vigencia de 30 años",
+    "descripcion": "Bienes comunales de San José de Gracia destinados voluntariamente a la conservación, con ecosistemas de bosque de pino-encino y pastizal. Constituye un santuario para el águila real (Aquila chrysaetos). Alberga especies bajo protección en la NOM-059-SEMARNAT como el tejón (Taxidea taxus), musaraña orejona (Cryptotis parva), murciélago trompudo (Choeronycteris mexicana), murciélago hocicudo mayor (Leptonycteris nivalis), cacomixtle (Bassariscus astutus) y liebre cola negra (Lepus californicus), así como especies de flora como biznagas (Ferocactus histrix, Mammillaria bombycina, Mammillaria perezdelarosae).",
+    "pdfs": {
+      "listado_advc_conanp": "https://cernicalohidrocalido-spec.github.io/anp-aguascalientes/assets/pdfs/advc-san-jose_listado-conanp-2025.pdf"
+    }
+  },
+  {
     "id": "sierra-del-laurel",
     "nombre": "ANP Sierra del Laurel",
     "nivel": "Estatal",
@@ -202,7 +215,7 @@
     "municipios": "Calvillo",
     "hectareas": 13.22,
     "fecha_decreto": "Aprobada el 7 de junio de 2023 por el H. Ayuntamiento de Calvillo, publicada en el Periódico Oficial del Estado el 26 de junio de 2023",
-    "descripcion": "Área ubicada en el municipio de Calvillo, declarada Zona de Conservación Ecológica Municipal con el fin de conservar el uso de suelo de conservación y la vegetación del sitio, así como sus bienes y servicios ambientales. Funciona como centro de educación ambiental regional que fomenta el reconocimiento y aprecio de los recursos naturales. Su administración corresponde a la Secretaría de Planeación, Ordenamiento Territorial y Medio Ambiente de Calvillo. Nota: aún no se cuenta con el polígono georreferenciado de esta ANP para el visor de mapa.",
+    "descripcion": "Área ubicada en el municipio de Calvillo, declarada Zona de Conservación Ecológica Municipal con el fin de conservar el uso de suelo de conservación y la vegetación del sitio, así como sus bienes y servicios ambientales. Funciona como centro de educación ambiental regional que fomenta el reconocimiento y aprecio de los recursos naturales. Su administración corresponde a la Secretaría de Planeación, Ordenamiento Territorial y Medio Ambiente de Calvillo.",
     "pdfs": {
       "decreto": "https://cernicalohidrocalido-spec.github.io/anp-aguascalientes/assets/pdfs/cema-calvillo_decreto.pdf",
       "estudio_previo_justificativo": "https://cernicalohidrocalido-spec.github.io/anp-aguascalientes/assets/pdfs/cema-calvillo_epj.pdf"
@@ -216,7 +229,7 @@
     "municipios": "Pabellón de Arteaga",
     "hectareas": 8.72,
     "fecha_decreto": "Decretada el 31 de marzo de 2021 por el H. Ayuntamiento de Pabellón de Arteaga, publicada en el Periódico Oficial del Estado el 19 de abril de 2021",
-    "descripcion": "Vivero forestal municipal ubicado dentro de la cabecera de Pabellón de Arteaga, declarado Zona de Conservación Ecológica Municipal para conservar sus árboles y vegetación, así como sus bienes y servicios ambientales, y para funcionar como centro de educación ambiental regional. Su administración corresponde al Instituto Municipal de Biodiversidad y Protección Ambiental de Pabellón de Arteaga. Nota: aún no se cuenta con el polígono georreferenciado de esta ANP para el visor de mapa.",
+    "descripcion": "Vivero forestal municipal ubicado dentro de la cabecera de Pabellón de Arteaga, declarado Zona de Conservación Ecológica Municipal para conservar sus árboles y vegetación, así como sus bienes y servicios ambientales, y para funcionar como centro de educación ambiental regional. Su administración corresponde al Instituto Municipal de Biodiversidad y Protección Ambiental de Pabellón de Arteaga.",
     "pdfs": {
       "decreto": "https://cernicalohidrocalido-spec.github.io/anp-aguascalientes/assets/pdfs/barranca-santiago-mezquite-vivero_decreto-conjunto.pdf",
       "estudio_previo_justificativo": "https://cernicalohidrocalido-spec.github.io/anp-aguascalientes/assets/pdfs/epj-vivero-conafor_documento.pdf"
