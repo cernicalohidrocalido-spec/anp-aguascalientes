@@ -90,6 +90,16 @@ async function init() {
       <h2>Documentos oficiales</h2>
       ${docsHTML}
     </div>
+
+    <div class="descripcion-box">
+      <h2>Descargar polígono</h2>
+      ${feature
+        ? `<div class="docs-box">
+            <a class="doc-link" href="assets/descargas/${anp.id}_shp.zip" download>🗂️ Shapefile (.zip)</a>
+            <a class="doc-link" href="assets/descargas/${anp.id}.kmz" download>🌐 KMZ (Google Earth)</a>
+          </div>`
+        : `<div class="aviso-todo">Aún no se cuenta con el polígono georreferenciado de esta ANP para su descarga.</div>`}
+    </div>
   `;
 
   const map = L.map('fichaMapa', { scrollWheelZoom: false });
